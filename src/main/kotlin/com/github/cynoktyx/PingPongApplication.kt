@@ -26,7 +26,9 @@ class PingPongApplication : Application<PingPongConfiguration>() {
 	}
 
 	override fun run(configuration: PingPongConfiguration, environment: Environment) {
-		component = DaggerPingPongComponent.builder().applicationModule(ApplicationModule(configuration, environment)).build()
+		configuration.name = name
+		component = DaggerPingPongComponent.builder().applicationModule(
+				ApplicationModule(configuration, environment)).build()
 	}
 }
 
