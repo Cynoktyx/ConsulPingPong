@@ -3,6 +3,7 @@ package com.github.cynoktyx
 import com.github.cynoktyx.di.ApplicationModule
 import com.github.cynoktyx.di.DaggerPingPongComponent
 import com.github.cynoktyx.di.PingPongComponent
+import com.github.cynoktyx.health.PingPongHealthCheck
 import io.dropwizard.Application
 import io.dropwizard.setup.Environment
 
@@ -29,6 +30,8 @@ class PingPongApplication : Application<PingPongConfiguration>() {
 		configuration.name = name
 		component = DaggerPingPongComponent.builder().applicationModule(
 				ApplicationModule(configuration, environment)).build()
+
+		environment.healthChecks().register("dummyHealth", PingPongHealthCheck())
 	}
 }
 
