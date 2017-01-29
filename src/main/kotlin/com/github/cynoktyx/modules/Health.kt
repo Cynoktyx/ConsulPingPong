@@ -7,4 +7,12 @@ import com.codahale.metrics.health.HealthCheck
  */
 class Health {
 	var healthStatus = HealthCheck.Result.healthy()!! // Dummy Health
+		private set
+
+	fun setHealth(newHealth: String, message: String? = null) {
+		if (newHealth.toLowerCase() == "healthy")
+			healthStatus = HealthCheck.Result.healthy(message)
+		else
+			healthStatus = HealthCheck.Result.unhealthy(message ?: newHealth)
+	}
 }

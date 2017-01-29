@@ -10,7 +10,7 @@ import javax.inject.Inject
  */
 class PingPongHealthCheck : HealthCheck() {
 	@Inject
-	lateinit var health: Health
+	internal lateinit var health: Health
 
 	init {
 		PingPongApplication.component.inject(this)

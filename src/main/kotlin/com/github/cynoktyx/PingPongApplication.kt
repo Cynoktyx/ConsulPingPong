@@ -31,6 +31,7 @@ class PingPongApplication : Application<PingPongConfiguration>() {
 		component = DaggerPingPongComponent.builder().applicationModule(
 				ApplicationModule(configuration, environment)).build()
 
+		environment.jersey().register(component.healthResource)
 		environment.healthChecks().register("dummyHealth", PingPongHealthCheck())
 	}
 }
