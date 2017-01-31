@@ -1,11 +1,13 @@
 package com.github.cynoktyx
 
+import com.github.cynoktyx.consul.ConsulHealthReporter
 import com.github.cynoktyx.di.ApplicationModule
 import com.github.cynoktyx.di.DaggerPingPongComponent
 import com.github.cynoktyx.di.PingPongComponent
 import com.github.cynoktyx.health.PingPongHealthCheck
 import io.dropwizard.Application
 import io.dropwizard.setup.Environment
+import kotlin.concurrent.thread
 
 /**
  * Created by lukas on 04.01.17
@@ -35,6 +37,11 @@ class PingPongApplication : Application<PingPongConfiguration>() {
 		environment.healthChecks().register("dummyHealth", PingPongHealthCheck())
 
 		environment.lifecycle().addServerLifecycleListener(StartupListener())
+		environment.lifecycle().addServerLifecycleListener {
+			val consulHealthReporter = ConsulHealthReporter(15000)
+			consulHealthReporter.start()
+			Runtime.getRuntime().addShutdownHook(thread(start = false) { consulHealthReporter.stop() })
+		}
 	}
 }
 
