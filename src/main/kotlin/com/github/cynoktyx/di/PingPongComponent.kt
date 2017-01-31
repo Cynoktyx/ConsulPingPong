@@ -9,7 +9,8 @@ import javax.inject.Singleton
  * Created by lukas on 05.01.17
  */
 @Singleton
-@Component(modules = arrayOf(ApplicationModule::class, NetworkingModule::class, HealthModule::class))
+@Component(
+		modules = arrayOf(ApplicationModule::class, NetworkingModule::class, HealthModule::class, ConsulModule::class))
 interface PingPongComponent {
 	fun inject(healthCheck: PingPongHealthCheck)
 
