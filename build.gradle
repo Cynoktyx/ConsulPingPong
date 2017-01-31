@@ -58,4 +58,6 @@ dependencies {
 
     testCompile "com.pholser:junit-quickcheck-core:$quickcheck_version"
     testCompile "com.pholser:junit-quickcheck-generators:$quickcheck_version"
+
+    compile "com.orbitz.consul:consul-client:0.13.8"
 }
