@@ -14,4 +14,9 @@ class PingPongConfiguration : Configuration() {
 
 	// To prevent handling impossible null values
 	val jerseyClientConfiguration get() = jerseyClient!!
+
+	var applicationPort = 0
+		internal set
+	var adminPort = 0
+		internal set
 }

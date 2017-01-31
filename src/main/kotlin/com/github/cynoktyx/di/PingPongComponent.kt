@@ -1,5 +1,6 @@
 package com.github.cynoktyx.di
 
+import com.github.cynoktyx.StartupListener
 import com.github.cynoktyx.health.PingPongHealthCheck
 import com.github.cynoktyx.resources.HealthResource
 import dagger.Component
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 		modules = arrayOf(ApplicationModule::class, NetworkingModule::class, HealthModule::class, ConsulModule::class))
 interface PingPongComponent {
 	fun inject(healthCheck: PingPongHealthCheck)
+	fun inject(healthCheck: StartupListener)
 
 	val healthResource: HealthResource
 }
