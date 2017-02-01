@@ -21,7 +21,7 @@ class PingPongConfiguration : Configuration() {
 		internal set
 	var adminPort = 0
 		internal set
-	
+
 	val ip: String by lazy {
 		val p = Runtime.getRuntime().exec("hostname -i")
 		p.waitFor()

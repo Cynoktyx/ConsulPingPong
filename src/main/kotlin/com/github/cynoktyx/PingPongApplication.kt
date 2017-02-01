@@ -34,6 +34,7 @@ class PingPongApplication : Application<PingPongConfiguration>() {
 				ApplicationModule(configuration, environment)).build()
 
 		environment.jersey().register(component.healthResource)
+		environment.jersey().register(component.consulDiscoveryResource)
 		environment.healthChecks().register("dummyHealth", PingPongHealthCheck())
 
 		environment.lifecycle().addServerLifecycleListener(StartupListener())
