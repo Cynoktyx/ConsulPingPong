@@ -10,6 +10,8 @@ class ConsulConnection(val serviceName: String, url: String = "") {
 	val consul: Consul
 	val agentClient
 		get() = consul.agentClient()!!
+	val keyValueClient
+		get() = consul.keyValueClient()!!
 	val serviceId: Long
 	val fullServiceName
 		get() = "$serviceName:$serviceId"
@@ -32,4 +34,6 @@ class ConsulConnection(val serviceName: String, url: String = "") {
 
 	fun getServicesByName(serviceName: String = this.serviceName) =
 			consul.healthClient().getAllServiceInstances(serviceName).response
+
+	fun getValueAsString(key: String) = keyValueClient.getValueAsString(key)
 }
