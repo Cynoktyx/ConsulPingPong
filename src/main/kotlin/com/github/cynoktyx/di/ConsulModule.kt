@@ -13,5 +13,6 @@ import javax.inject.Singleton
 class ConsulModule {
 	@Provides
 	@Singleton
-	fun provideConsulConnection(configuration: PingPongConfiguration) = ConsulConnection(configuration.name)
+	fun provideConsulConnection(configuration: PingPongConfiguration) = ConsulConnection(configuration.name,
+			configuration.consulUrl)
 }

@@ -17,6 +17,9 @@ class PingPongConfiguration : Configuration() {
 	// To prevent handling impossible null values
 	val jerseyClientConfiguration get() = jerseyClient!!
 
+	@JsonProperty
+	lateinit var consulUrl: String
+
 	var applicationPort = 0
 		internal set
 	var adminPort = 0
