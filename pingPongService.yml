@@ -1,7 +1,7 @@
 consulUrl: http://localhost:8500
 
 server:
-  rootPath : /api/*
+  rootPath : ${rootPath:-/api/*}
   applicationConnectors:
     - type: http
       port: 8080

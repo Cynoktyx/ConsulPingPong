@@ -1,11 +1,14 @@
 package com.github.cynoktyx
 
+import com.github.cynoktyx.configuration.ConsulKVSubstitutor
 import com.github.cynoktyx.consul.ConsulHealthReporter
 import com.github.cynoktyx.di.ApplicationModule
 import com.github.cynoktyx.di.DaggerPingPongComponent
 import com.github.cynoktyx.di.PingPongComponent
 import com.github.cynoktyx.health.PingPongHealthCheck
 import io.dropwizard.Application
+import io.dropwizard.configuration.SubstitutingSourceProvider
+import io.dropwizard.setup.Bootstrap
 import io.dropwizard.setup.Environment
 import kotlin.concurrent.thread
 
@@ -26,6 +29,12 @@ class PingPongApplication : Application<PingPongConfiguration>() {
 
 	override fun getName(): String {
 		return "ping-pong-service"
+	}
+
+	override fun initialize(bootstrap: Bootstrap<PingPongConfiguration>) {
+		bootstrap.configurationSourceProvider = SubstitutingSourceProvider(
+				bootstrap.configurationSourceProvider, ConsulKVSubstitutor(false)
+		)
 	}
 
 	override fun run(configuration: PingPongConfiguration, environment: Environment) {
