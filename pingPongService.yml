@@ -1,3 +1,5 @@
+consulTTL: ${ttl:-30}
+
 server:
   rootPath : ${rootPath:-/api/*}
   applicationConnectors:

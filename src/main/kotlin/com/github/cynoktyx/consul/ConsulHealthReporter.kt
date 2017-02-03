@@ -27,7 +27,7 @@ class ConsulHealthReporter(val delay: Long, val period: Long = delay) : TimerTas
 
 	private fun register() {
 		val registration = ImmutableRegistration.builder()
-				.check(Registration.RegCheck.ttl(30L))
+				.check(Registration.RegCheck.ttl(configuration.consulTTL))
 				.port(configuration.applicationPort)
 				.name(consulConnection.serviceName)
 				.id(serviceId)
