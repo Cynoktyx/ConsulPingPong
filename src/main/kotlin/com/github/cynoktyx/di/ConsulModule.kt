@@ -14,5 +14,5 @@ class ConsulModule {
 	@Provides
 	@Singleton
 	fun provideConsulConnection(configuration: PingPongConfiguration) = ConsulConnection(configuration.name,
-			configuration.consulUrl)
+			System.getenv("CONSUL_URL") ?: "http://localhost:8500")
 }

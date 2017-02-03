@@ -18,7 +18,7 @@ class PingPongConfiguration : Configuration() {
 	val jerseyClientConfiguration get() = jerseyClient!!
 
 	@JsonProperty
-	lateinit var consulUrl: String
+	var consulTTL = 0L
 
 	var applicationPort = 0
 		internal set
