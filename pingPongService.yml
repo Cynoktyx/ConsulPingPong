@@ -1,5 +1,3 @@
-consulUrl: http://localhost:8500
-
 server:
   rootPath : ${rootPath:-/api/*}
   applicationConnectors:
