@@ -5,6 +5,7 @@ import com.github.cynoktyx.consul.ConsulHealthReporter
 import com.github.cynoktyx.health.PingPongHealthCheck
 import com.github.cynoktyx.resources.ConsulDiscoveryResource
 import com.github.cynoktyx.resources.HealthResource
+import com.github.cynoktyx.resources.PingResource
 import dagger.Component
 import javax.inject.Singleton
 
@@ -21,4 +22,5 @@ interface PingPongComponent {
 
 	val healthResource: HealthResource
 	val consulDiscoveryResource: ConsulDiscoveryResource
+	val pingResource: PingResource
 }
